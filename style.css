@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #1a237e;
+    margin-bottom: 15px;
+}
+
+.portfolio-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    height: 400px;
+}
+
+.timeframe-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.timeframe-btn {
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.timeframe-btn.active {
+    background-color: #1a237e;
+    color: white;
+    border-color: #1a237e;
+}
+
+.trading-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.stock-selector select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.trade-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.price-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a237e;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.trade-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buy {
+    background-color: #4caf50;
+    color: white;
+}
+
+.buy:hover {
+    background-color: #45a049;
+}
+
+.sell {
+    background-color: #f44336;
+    color: white;
+}
+
+.sell:hover {
+    background-color: #da190b;
+}
+
+.portfolio {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#portfolioList {
+    margin-top: 15px;
+}
+
+.market-news {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#newsFeed {
+    margin-top: 15px;
+}
+
+.advanced-trade-options {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.advanced-trade-options select,
+.advanced-trade-options input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.algo-trading {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.algo-trading h4 {
+    margin-bottom: 10px;
+    color: #1a237e;
+}
+
+.algo-trading select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .portfolio-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .trading-panel {
+        grid-template-columns: 1fr;
+    }
+}

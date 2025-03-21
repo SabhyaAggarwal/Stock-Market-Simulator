@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Stock Market Simulator</h1>
+            <div class="portfolio-summary">
+                <h2>Portfolio Value: $<span id="portfolioValue">100000.00</span></h2>
+                <h3>Available Cash: $<span id="availableCash">100000.00</span></h3>
+            </div>
+        </header>
+
+        <main>
+            <div class="timeframe-selector">
+                <button class="timeframe-btn active" data-period="1D">1D</button>
+                <button class="timeframe-btn" data-period="1W">1W</button>
+                <button class="timeframe-btn" data-period="1M">1M</button>
+                <button class="timeframe-btn" data-period="3M">3M</button>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+            </div>
+
+            <div class="trading-panel">
+                <div class="stock-selector">
+                    <select id="stockSelect">
+                        <option value="AAPL">Apple (AAPL)</option>
+                        <option value="GOOGL">Google (GOOGL)</option>
+                        <option value="MSFT">Microsoft (MSFT)</option>
+                        <option value="AMZN">Amazon (AMZN)</option>
+                        <option value="TSLA">Tesla (TSLA)</option>
+                    </select>
+                </div>
+
+                <div class="trade-form">
+                    <div class="price-info">
+                        <span>Current Price: $<span id="currentPrice">0.00</span></span>
+                    </div>
+                    <input type="number" id="shares" placeholder="Number of shares">
+                    <div class="trade-buttons">
+                        <button id="buyBtn" class="btn buy">Buy</button>
+                        <button id="sellBtn" class="btn sell">Sell</button>
+                    </div>
+                    <div class="advanced-trade-options">
+                        <select id="orderType">
+                            <option value="market">Market Order</option>
+                            <option value="limit">Limit Order</option>
+                            <option value="stop">Stop Order</option>
+                        </select>
+                        <input type="number" id="limitPrice" placeholder="Limit Price" class="hidden">
+                        <input type="number" id="stopPrice" placeholder="Stop Price" class="hidden">
+                    </div>
+                    <div class="algo-trading">
+                        <h4>Trading Algorithms</h4>
+                        <select id="algoSelect">
+                            <option value="none">Manual Trading</option>
+                            <option value="momentum">Momentum Trading</option>
+                            <option value="meanReversion">Mean Reversion</option>
+                            <option value="trendFollowing">Trend Following</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="portfolio">
+                    <h3>Your Portfolio</h3>
+                    <div id="portfolioList"></div>
+                </div>
+            </div>
+
+            <div class="market-news">
+                <h3>Market News</h3>
+                <div id="newsFeed"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
