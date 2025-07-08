@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Market Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="main-header">
             <h1>Stock Market Simulator</h1>
-            <div class="portfolio-summary">
-                <h2>Portfolio Value: $<span id="portfolioValue">100000.00</span></h2>
-                <h3>Available Cash: $<span id="availableCash">100000.00</span></h3>
+            <div class="portfolio-summary card">
+                <div>
+                    <span class="summary-label">Portfolio Value:</span>
+                    <span class="summary-value" id="portfolioValue">$10000.00</span>
+                </div>
+                <div>
+                    <span class="summary-label">Available Cash:</span>
+                    <span class="summary-value" id="availableCash">$10000.00</span>
+                </div>
             </div>
         </header>
 
-        <main>
-            <div class="timeframe-selector">
-                <button class="timeframe-btn active" data-period="1D">1D</button>
-                <button class="timeframe-btn" data-period="1W">1W</button>
-                <button class="timeframe-btn" data-period="1M">1M</button>
-                <button class="timeframe-btn" data-period="3M">3M</button>
-            </div>
-
-            <div class="chart-container">
+        <main class="main-content">
+            <section class="card chart-section">
+                <h2>Stock Overview</h2>
                 <canvas id="stockChart"></canvas>
-            </div>
-
-            <div class="trading-panel">
                 <div class="stock-selector">
                     <select id="stockSelect">
                         <option value="AAPL">Apple (AAPL)</option>
@@ -37,22 +37,29 @@
                         <option value="AMZN">Amazon (AMZN)</option>
                         <option value="TSLA">Tesla (TSLA)</option>
                     </select>
+                    <span class="price-info">Current Price: $<span id="currentPrice">0.00</span></span>
                 </div>
-
-                <div class="trade-form">
-                    <div class="price-info">
-                        <span>Current Price: $<span id="currentPrice">0.00</span></span>
+            </section>
+            <section class="card trading-section">
+                <h2>Trade</h2>
+                <form id="tradeForm">
+                    <input type="number" id="shares" placeholder="Number of shares" min="1">
+                    <div class="trade-btns">
+                        <button type="button" id="buyBtn" class="btn buy">Buy</button>
+                        <button type="button" id="sellBtn" class="btn sell">Sell</button>
                     </div>
-                    <input type="number" id="shares" placeholder="Number of shares">
-                    <div class="trade-buttons">
-                        <button id="buyBtn" class="btn buy">Buy</button>
-                        <button id="sellBtn" class="btn sell">Sell</button>
-                    </div>
-                    <div class="advanced-trade-options">
-                        <select id="orderType">
-                            <option value="market">Market Order</option>
-                            <option value="limit">Limit Order</option>
-                            <option value="stop">Stop Order</option>
-                        </select>
-                        <input type="number" id="limitPrice" placeholder="Limit Price" class="hidden">
-                        <input type="number" id="stopPrice" placeholder="Stop Price" class="hidden">
+                </form>
+            </section>
+            <section class="card portfolio-section">
+                <h2>Your Portfolio</h2>
+                <div id="portfolioList"></div>
+            </section>
+        </main>
+        <footer>
+            <span>© 2025 Stock Market Simulator. Modern UI by Copilot.</span>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
