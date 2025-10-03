@@ -206,10 +206,23 @@ footer {
     .portfolio-section {
         grid-column: 1;
     }
+    .trading-section {
+        grid-column: 1;
+    }
+    .chart-section {
+        grid-column: 1;
+    }
     .main-header {
         padding: 18px 7vw 14px 7vw;
     }
     .card {
         padding: 18px 6vw;
+    }
+    .trade-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn {
+        width: 100%;
     }
 }

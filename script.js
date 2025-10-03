@@ -72,14 +72,22 @@ class StockMarketSimulator {
     async startSimulation() {
         const stocks = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA'];
         
-        // Initialize with realistic base prices
-        const basePrices = {
-            'AAPL': 175.00,
-            'GOOGL': 2800.00,
-            'MSFT': 420.00,
-            'AMZN': 3400.00,
-            'TSLA': 250.00
+        // Initialize with random base prices (realistic ranges)
+        const basePriceRanges = {
+            'AAPL': { min: 150, max: 200 },
+            'GOOGL': { min: 2600, max: 3000 },
+            'MSFT': { min: 380, max: 460 },
+            'AMZN': { min: 3200, max: 3600 },
+            'TSLA': { min: 200, max: 300 }
         };
+        
+        // Generate random prices within ranges
+        const basePrices = {};
+        stocks.forEach(stock => {
+            const range = basePriceRanges[stock];
+            const randomPrice = range.min + Math.random() * (range.max - range.min);
+            basePrices[stock] = randomPrice;
+        });
         
         // Set initial prices
         stocks.forEach(stock => {
