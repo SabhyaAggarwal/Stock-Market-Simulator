@@ -102,8 +102,6 @@ class StockMarketSimulator {
         this.updateDisplay();
     }
 
-
-
     updateStockPrices(stocks) {
         // Simulate realistic stock price movements
         stocks.forEach(stock => {
