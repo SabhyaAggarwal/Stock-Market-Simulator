@@ -1,4 +1,4 @@
-// Core Stock Market Simulator (real prices, persistent, $10,000 start)
+// Core Stock Market Simulator (simulated prices, persistent, $10,000 start)
 class StockMarketSimulator {
     constructor() {
         const savedData = this.loadSavedData();
@@ -69,7 +69,7 @@ class StockMarketSimulator {
         this.drawChart();
     }
 
-    async startSimulation() {
+    startSimulation() {
         const stocks = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA'];
         
         // Initialize with random base prices (realistic ranges)
@@ -89,53 +89,20 @@ class StockMarketSimulator {
             basePrices[stock] = randomPrice;
         });
         
-        // Set initial prices
+        // Using simulated prices only - no external API calls
+        console.log('Initializing with simulated prices only');
         stocks.forEach(stock => {
             this.stockPrices.set(stock, basePrices[stock]);
             this.priceHistory.set(stock, []);
+            this.addPriceToHistory(stock, basePrices[stock]);
         });
-        
-        // Try to get real prices first, then fallback to simulation
-        await this.fetchRealPrices(stocks, basePrices);
         
         // Update prices every 10 seconds
         this.priceInterval = setInterval(() => this.updateStockPrices(stocks), 10000);
         this.updateDisplay();
     }
 
-    async fetchRealPrices(stocks, basePrices) {
-        try {
-            // Try multiple APIs for real stock prices
-            await this.tryFinnhubAPI(stocks);
-        } catch (error) {
-            console.log('Real API failed, using simulated prices:', error.message);
-            // Initialize with base prices and start simulation
-            stocks.forEach(stock => {
-                this.stockPrices.set(stock, basePrices[stock]);
-                this.addPriceToHistory(stock, basePrices[stock]);
-            });
-        }
-    }
 
-    async tryFinnhubAPI(stocks) {
-        // Finnhub free API (requires no CORS proxy)
-        const API_KEY = 'demo'; // Using demo key for testing
-        
-        for (const stock of stocks) {
-            try {
-                const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${API_KEY}`);
-                const data = await response.json();
-                
-                if (data.c && data.c > 0) {
-                    this.stockPrices.set(stock, data.c);
-                    this.addPriceToHistory(stock, data.c);
-                }
-            } catch (e) {
-                console.log(`Failed to fetch ${stock} from Finnhub:`, e.message);
-                throw e;
-            }
-        }
-    }
 
     updateStockPrices(stocks) {
         // Simulate realistic stock price movements
